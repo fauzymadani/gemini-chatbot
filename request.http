@@ -1,0 +1,127 @@
+### Variables
+@baseUrl = http://localhost:3000
+@apiEndpoint = /api/chat
+
+### Test 1: Simple question
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "user",
+      "contents": "What is API?"
+    }
+  ]
+}
+
+###
+
+### Test 2: Multi-turn conversation
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "user",
+      "contents": "What is API?"
+    },
+    {
+      "role": "model",
+      "contents": "An API (Application Programming Interface) is a set of protocols, tools, and definitions for building application software..."
+    },
+    {
+      "role": "user",
+      "contents": "Can you give me an example?"
+    }
+  ]
+}
+
+###
+
+### Test 3: Question about markdown rendering
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "user",
+      "contents": "Explain the difference between frontend and backend with code examples"
+    }
+  ]
+}
+
+###
+
+### Test 4: Using 'text' field instead of 'contents'
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "Apa itu JavaScript?"
+    }
+  ]
+}
+
+###
+
+### Test 5: Indonesian question (apa itu API)
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "user",
+      "contents": "apa itu api?"
+    }
+  ]
+}
+
+###
+
+### Test 6: Error test - Invalid role
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "invalid",
+      "contents": "This should fail"
+    }
+  ]
+}
+
+###
+
+### Test 7: Error test - Empty contents
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": [
+    {
+      "role": "user",
+      "contents": ""
+    }
+  ]
+}
+
+###
+
+### Test 8: Error test - Non-array conversation
+POST {{baseUrl}}{{apiEndpoint}}
+Content-Type: application/json
+
+{
+  "conversation": {
+    "role": "user",
+    "contents": "This is not an array"
+  }
+}
