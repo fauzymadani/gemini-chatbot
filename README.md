@@ -16,8 +16,8 @@ Before you begin, ensure you have the following installed on your system:
 Open your terminal and run the following command to clone the project:
 
 ```bash
-git clone https://github.com/yourusername/gemini-chatbot-api.git
-cd gemini-chatbot-api
+git clone https://github.com/fauzymadani/gemini-chatbot.git
+cd gemini-chatbot
 ```
 
 Replace `yourusername` with the actual GitHub username or repository URL.
